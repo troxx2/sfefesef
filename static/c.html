@@ -1,0 +1,114 @@
+<html lang="en">
+	<head>
+        <!--
+    NotGoogle
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+        -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Google</title>
+		<link rel="stylesheet" href="../css/css.css" />
+		<script src="js/xor.js"></script>
+		<script src="/uv/uv.bundle.js"></script>
+		<script src="/uv/uv.config.js"></script>
+	</head>
+
+	<body id="body" style="background-color: rgb(50, 54, 57);width:100vw;height:90vh;">
+		<div class="center">
+			<h2>Shortcuts</h2>
+			<div class="parent">
+				<div class="column games">
+					
+				</div>
+
+				<div class="column">
+					<button class="accordion appac">Apps</button>
+					<div class="panel apps">
+					</div>
+				</div>
+			</div>
+			<script src="games.js"></script>
+			<script>
+				function Insertclick(div, url) {
+					if(url.startsWith("-/")) {
+						div.addEventListener('click', ()=>{
+							location.href=url.substring(1);
+						});
+					}else {
+						div.addEventListener('click', ()=>{
+							location.href=__uv$config.prefix+xor.encode(url);
+						});
+					}
+				}
+
+				for(var app of window.aag.games) {
+					var div = document.createElement('div');
+					div.className = 'shortcut';
+					Insertclick(div, app.url);
+					
+					var b = document.createElement('b');
+					b.textContent = app.name;
+					var img = document.createElement('img');
+					img.src =app.image;
+					img.align = 'left';
+
+					div.appendChild(b);
+					div.appendChild(img);
+
+					for(var ctg of app.category) {
+						try {
+							(document.querySelector('.'+ctg)).prop;
+							document.querySelector('.'+ctg).appendChild(div);
+						}catch(exi){
+							document.querySelector('.games').insertAdjacentHTML("beforeend", `<button class="accordion">${ctg.charAt(0).toUpperCase() + ctg.slice(1)} Games</button>
+					<div class="panel ${ctg}">
+					</div>`);
+							document.querySelector('.'+ctg).appendChild(div);
+						}
+					}
+				}
+				for(var app of window.aag.apps) {
+					var div = document.createElement('div');
+					div.className = 'shortcut';
+					Insertclick(div, app.url);
+					
+					var b = document.createElement('b');
+					b.textContent = app.name;
+					var img = document.createElement('img');
+					img.src =app.image;
+					img.align = 'left';
+
+					div.appendChild(b);
+					div.appendChild(img);
+
+					document.querySelector('.apps').appendChild(div);
+				}
+				// });
+				var acc = document.getElementsByClassName("accordion");
+				var i;
+
+				for (i = 0; i < acc.length; i++) {
+					acc[i].addEventListener("click", function() {
+						this.classList.toggle("active");
+						var panel = this.nextElementSibling;
+						if (panel.style.maxHeight) {
+							panel.style.maxHeight = null;
+						} else {
+							panel.style.maxHeight = panel.scrollHeight + "px";
+						}
+					});
+				}
+			</script>
+		</div>
+		<script src="js/bookmarks.js"></script>
+	</body>
+</html>

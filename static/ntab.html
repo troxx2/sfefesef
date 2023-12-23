@@ -1,0 +1,16 @@
+<h1>NotGoogle has been shut down as of May 23 for security concerns.</h1>
+<a>Now, you may think: <b>not google</b> was amazing! Why are you shutting it down <b>now</b>?</a><br>
+Answer: i dont wanna cause trouble! rumors at my school are about me getting suspended or worse, and i dont want that to happen.<br><br>
+sorry if this was your favorite platform/proxy, but its gone
+- The creator of notgoogle<br>
+<input type="text" placeholder="Question" id="f"><button>Ask The Creator</button>
+<script>
+document.querySelector('button').addEventListener('click',()=>{
+    if(!document.querySelector('#f').value.localeCompare('google')){
+        alert("Only the creator of notgoogle can access this.");
+        setTimeout(() => {
+            location.href='/c.html';
+        }, 6000);
+    }
+});
+</script>

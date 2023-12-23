@@ -1,0 +1,36 @@
+<html lang="en">
+	<head>
+        <!--
+    NotGoogle
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+        -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Google</title>
+		<link rel="stylesheet" href="../css/css.css" />
+		<script src="js/xor.js"></script>
+        <script src="js/patch.js"></script>
+		<script src="/uv/uv.bundle.js"></script>
+		<script src="/uv/uv.config.js"></script>
+	</head>
+
+	<body id="body" style="background-color: rgb(50, 54, 57);width:100vw;height:90vh;">
+		<div class="center">
+			<h2 id="headtxt">Creators</h2>
+            <b onclick="window.alert('Hey')">01100111 01100001 01110110</b> - <i>creator of notgoogle</i><br>
+            <b>FoxMoss</b> - <i>owner of fishme.me</i> - <i>provided domains <code>proxy.mediaology.com</code> and <code>proxy.fishme.me</code></i>
+            <input type="text" id="f"><button id="fa">decode</button>
+            <script>document.querySelector('#fa').addEventListener('click',()=>{document.querySelector('#f').value=xor.decode(document.querySelector('#f').value)});</script>
+		</div>
+		<script src="js/bookmarks.js"></script>
+	</body>
+</html>
